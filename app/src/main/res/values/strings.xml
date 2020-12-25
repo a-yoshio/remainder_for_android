@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">remainder_for_android</string>
+    <string name="title">Remainder List</string>
+    <string name="bt_submit">search</string>
+</resources>
