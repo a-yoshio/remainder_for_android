@@ -1,5 +1,18 @@
 <resources>
-    <string name="app_name">remainder_for_android</string>
+    <string name="app_name">Remainder</string>
     <string name="title">Remainder List</string>
-    <string name="bt_submit">search</string>
+    <string name="bt_search">search</string>
+    <string name="create_title">Create Remainder</string>
+    <string name="title_input_contents">Contents</string>
+    <string name="title_input_datetime">Remaind Date and Time</string>
+    <string name="title_input_date">Date</string>
+    <string name="title_input_time">Time</string>
+    <string name="title_input_tag">Tag</string>
+    <string name="title_switch_complete">Complete?</string>
+    <string-array name="tag_array">
+        <item>家</item>
+        <item>プライベート</item>
+        <item>会社</item>
+    </string-array>
+    <string name="bt_submit">submit</string>
 </resources>
