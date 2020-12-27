@@ -15,4 +15,6 @@
         <item>会社</item>
     </string-array>
     <string name="bt_submit">submit</string>
+    <string name="bt_clear">clear</string>
+    <string name="bt_cancel">cancel</string>
 </resources>

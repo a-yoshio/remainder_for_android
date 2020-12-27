@@ -25,9 +25,18 @@
         <item name="android:background">@color/colorInput</item>
     </style>
     <style name="btStyle" parent="android:TextAppearance.Widget.Button">
-        <item name="android:layout_margin">5dp</item>s
+        <item name="android:layout_margin">5dp</item>
         <item name="android:background">@drawable/mybutton</item>
         <item name="android:textColor">#ffffff</item>
     </style>
-
+    <style name="btCancelStyle" parent="android:TextAppearance.Widget.Button">
+        <item name="android:layout_margin">5dp</item>s
+        <item name="android:background">@drawable/cancel_btn</item>
+        <item name="android:textColor">#ffffff</item>
+    </style>
+    <style name="btErrorStyle" parent="android:TextAppearance.Widget.Button">
+        <item name="android:layout_margin">5dp</item>s
+        <item name="android:background">@drawable/error_btn</item>
+        <item name="android:textColor">#ffffff</item>
+    </style>
 </resources>
