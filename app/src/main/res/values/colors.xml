@@ -6,7 +6,8 @@
     <color name="colorTitle">#1f2333</color>
     <color name="colorBackground">#e6eaff</color>
     <color name="colorRemainder">#ccccff</color>
-    <color name="colorInputTitle">#4d4d99</color>
+    <color name="colorInputTitle">#8aa8e6</color>
     <color name="colorInput">#ffffff</color>
+    <color name="colorLink"></color>
     <color name="colorButton">#689a92</color>
 </resources>

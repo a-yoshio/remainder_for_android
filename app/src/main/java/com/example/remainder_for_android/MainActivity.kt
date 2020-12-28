@@ -25,8 +25,14 @@ class MainActivity : AppCompatActivity() {
     }
 
     fun moveToRegist(view: View) {
-            val intent = Intent(applicationContext, RegistRemainderActivity::class.java)
-            startActivity(intent)
+        val intent = Intent(applicationContext, RegistRemainderActivity::class.java)
+        startActivity(intent)
+    }
+
+    // TODO: ログイン認証実装したら消す
+    fun moveToLogin(view: View) {
+        val intent = Intent(applicationContext, LoginActivity::class.java)
+        startActivity(intent)
     }
 
     private inner class TrashBtnClickListner: View.OnClickListener {
@@ -36,5 +42,4 @@ class MainActivity : AppCompatActivity() {
             dialogFragment.show(supportFragmentManager, "DeleteConfirmDialogFragment")
         }
     }
-
 }

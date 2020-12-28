@@ -3,6 +3,7 @@
     <string name="title">Remainder List</string>
     <string name="bt_search">search</string>
     <string name="create_title">Create Remainder</string>
+    <string name="update_title">Update Remainder</string>
     <string name="title_input_contents">Contents</string>
     <string name="title_input_datetime">Remaind Date and Time</string>
     <string name="title_input_date">Date</string>
@@ -22,4 +23,19 @@
     <string name="dialog_btn_ok">yes</string>
     <string name="dialog_btn_no">cancel</string>
     <string name="delete_complete_toast">リマインダーを削除しました</string>
+    <string name="login_title">Login</string>
+    <string name="login_id">ID</string>
+    <string name="login_password">Password</string>
+    <string name="login_enter_btn">enter</string>
+    <string name="login_signin_btn">Sign In</string>
+    <string name="singin_title">Sing In</string>
+    <string name="signin_mailaddress">Mail Address</string>
+    <string name="signin_explain">ユーザー登録フォームをメールアドレス宛にお送りします。</string>
+    <string name="complete_send_mail_title">Complete Send Mail</string>
+    <string name="complete_send_mail_explain">登録メールアドレス宛にユーザー登録URLを送信しました。ご確認ください。</string>
+    <string name="regist_user_title">Sign In</string>
+    <string name="regist_user_name">Name</string>
+    <string name="regist_user_mail_address">Mail Address</string>
+    <string name="regist_user_password">Password</string>
+    <string name="regist_user_confirmation_password">Confirmation Password</string>
 </resources>
