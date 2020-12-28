@@ -19,10 +19,8 @@ class RegistRemainderActivity : AppCompatActivity() {
         val btCancel = findViewById<Button>(R.id.btCancel)
         val btSubmit = findViewById<Button>(R.id.btSubmit)
 
-        val onClickInstance = createActionListner()
-        btSubmit.setOnClickListener(onClickInstance)
-        btClear.setOnClickListener(onClickInstance)
-        btCancel.setOnClickListener(onClickInstance)
+        val createActionInstance = createActionListner()
+        arrayOf(btSubmit, btCancel, btClear).map { it.setOnClickListener(createActionInstance) }
     }
 
     private inner class createActionListner:View.OnClickListener {

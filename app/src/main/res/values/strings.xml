@@ -17,4 +17,9 @@
     <string name="bt_submit">submit</string>
     <string name="bt_clear">clear</string>
     <string name="bt_cancel">cancel</string>
+    <string name="dialog_title">Delete Remainder</string>
+    <string name="dialog_msg">本当にリマインダーを削除しますか？</string>
+    <string name="dialog_btn_ok">yes</string>
+    <string name="dialog_btn_no">cancel</string>
+    <string name="delete_complete_toast">リマインダーを削除しました</string>
 </resources>
