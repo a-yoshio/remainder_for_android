@@ -1,14 +1,16 @@
 package com.example.remainder_for_android.activity
 
+import android.app.DatePickerDialog
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.view.View
-import android.widget.Button
-import android.widget.EditText
-import android.widget.Spinner
-import android.widget.Switch
+import android.widget.*
+import com.example.remainder_for_android.R
+import com.example.remainder_for_android.flagment.DatePickerDialogFragment
+import java.util.*
 
-class RegistRemainderActivity : AppCompatActivity() {
+class RegistRemainderActivity : AppCompatActivity(), DatePickerDialog.OnDateSetListener {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -21,6 +23,19 @@ class RegistRemainderActivity : AppCompatActivity() {
 
         val createActionInstance = createActionListner()
         arrayOf(btSubmit, btCancel, btClear).map { it.setOnClickListener(createActionInstance) }
+    }
+
+    override fun onDateSet(view: DatePicker, year: Int, monthOfYear: Int, dayOfMonth: Int) {
+        val str = String.format(Locale.US, "%d/%d/%d", year, monthOfYear+1, dayOfMonth)
+        val dateEditText = findViewById<TextView>(R.id.date)
+        dateEditText.setText(str)
+    }
+
+
+    fun showDatePickerDialog(v: View) {
+        val newFragment = DatePickerDialogFragment()
+        newFragment.show(supportFragmentManager, "datePicker")
+
     }
 
     private inner class createActionListner:View.OnClickListener {
