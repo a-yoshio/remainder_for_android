@@ -1,16 +1,17 @@
 package com.example.remainder_for_android.activity
 
 import android.app.DatePickerDialog
+import android.app.TimePickerDialog
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
 import android.view.View
 import android.widget.*
 import com.example.remainder_for_android.R
-import com.example.remainder_for_android.flagment.DatePickerDialogFragment
+import com.example.remainder_for_android.fragment.DatePickerDialogFragment
+import com.example.remainder_for_android.fragment.TimePickerDialogFragment
 import java.util.*
 
-class RegistRemainderActivity : AppCompatActivity(), DatePickerDialog.OnDateSetListener {
+class RegistRemainderActivity : AppCompatActivity(), DatePickerDialog.OnDateSetListener, TimePickerDialog.OnTimeSetListener {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -27,15 +28,26 @@ class RegistRemainderActivity : AppCompatActivity(), DatePickerDialog.OnDateSetL
 
     override fun onDateSet(view: DatePicker, year: Int, monthOfYear: Int, dayOfMonth: Int) {
         val str = String.format(Locale.US, "%d/%d/%d", year, monthOfYear+1, dayOfMonth)
-        val dateEditText = findViewById<TextView>(R.id.date)
-        dateEditText.setText(str)
+        val dateTextView = findViewById<TextView>(R.id.date)
+        dateTextView.setText(str)
     }
 
 
     fun showDatePickerDialog(v: View) {
         val newFragment = DatePickerDialogFragment()
         newFragment.show(supportFragmentManager, "datePicker")
+    }
 
+    override fun onTimeSet(view: TimePicker, hourOfDay: Int, minute: Int) {
+        val str = String.format(Locale.US, "%d:%d", hourOfDay, minute)
+        val timeTextView = findViewById<TextView>(R.id.time)
+        timeTextView.text = str
+    }
+
+
+    fun showTimePickerDialog(v: View) {
+        val newFragment = TimePickerDialogFragment()
+        newFragment.show(supportFragmentManager, "timePicker")
     }
 
     private inner class createActionListner:View.OnClickListener {

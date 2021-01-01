@@ -11,7 +11,7 @@ import android.widget.*
 import com.example.remainder_for_android.R
 import com.example.remainder_for_android.entity.Remainder
 import com.example.remainder_for_android.entity.Tag
-import com.example.remainder_for_android.flagment.DeleteConfirmDialogFragment
+import com.example.remainder_for_android.fragment.DeleteConfirmDialogFragment
 import com.example.remainder_for_android.utils.Util
 
 class MainActivity : AppCompatActivity() {

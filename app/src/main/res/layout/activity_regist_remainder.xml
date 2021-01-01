@@ -52,12 +52,13 @@
             android:layout_margin="5dp"
             android:text="@string/title_input_time"
             />
-        <EditText
+        <TextView
             android:id="@+id/time"
             style="@style/inputStyle"
             android:layout_width="100dp"
             android:layout_height="wrap_content"
             android:inputType="date"
+            android:onClick="showTimePickerDialog"
             />
     </LinearLayout>
     <TextView

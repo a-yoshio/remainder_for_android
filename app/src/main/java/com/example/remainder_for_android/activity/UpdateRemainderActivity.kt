@@ -1,15 +1,14 @@
 package com.example.remainder_for_android.activity
 
+import android.app.DatePickerDialog
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.view.View
-import android.widget.Button
-import android.widget.EditText
-import android.widget.Spinner
-import android.widget.Switch
+import android.widget.*
+import com.example.remainder_for_android.R
 
-class UpdateRemainderActivity : AppCompatActivity() {
+class UpdateRemainderActivity : AppCompatActivity(), DatePickerDialog.OnDateSetListener {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -41,6 +40,10 @@ class UpdateRemainderActivity : AppCompatActivity() {
 
         val createActionInstance = createActionListner()
         arrayOf(btSubmit, btCancel, btClear).map { it.setOnClickListener(createActionInstance) }
+    }
+
+    override fun onDateSet(view: DatePicker, year: Int, monthOfYear: Int, dayOfMonth: Int) {
+        Log.d("DEBUG", ">>> get date for regist: " + view)
     }
 
     private inner class createActionListner:View.OnClickListener {

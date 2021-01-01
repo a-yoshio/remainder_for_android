@@ -5,7 +5,7 @@ import android.os.Bundle
 import android.view.View
 import android.widget.Button
 import com.example.remainder_for_android.R
-import com.example.remainder_for_android.flagment.CompleteSendMailDialogFragment
+import com.example.remainder_for_android.fragment.CompleteSendMailDialogFragment
 
 class SignInActivity : AppCompatActivity() {
 

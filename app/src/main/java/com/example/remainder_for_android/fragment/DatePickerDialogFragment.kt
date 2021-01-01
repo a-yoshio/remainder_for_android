@@ -1,4 +1,4 @@
-package com.example.remainder_for_android.flagment
+package com.example.remainder_for_android.fragment
 
 import android.app.DatePickerDialog
 import android.app.Dialog

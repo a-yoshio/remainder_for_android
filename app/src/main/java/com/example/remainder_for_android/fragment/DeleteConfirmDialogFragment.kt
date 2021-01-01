@@ -1,28 +1,37 @@
-package com.example.remainder_for_android.flagment
+package com.example.remainder_for_android.fragment
 
 import android.app.AlertDialog
 import android.app.Dialog
 import android.content.DialogInterface
 import android.os.Bundle
+import android.widget.Toast
 import androidx.fragment.app.DialogFragment
 import com.example.remainder_for_android.R
 
-class CompleteSendMailDialogFragment: DialogFragment() {
+class DeleteConfirmDialogFragment: DialogFragment() {
     override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
         // ダイアログビルダを生成
         val builder = AlertDialog.Builder(activity)
         // ダイアログのタイトルを設定
-        builder.setTitle(R.string.complete_send_mail_title)
+        builder.setTitle(R.string.dialog_title)
         // ダイアログのメッセージを設定
-        builder.setMessage(R.string.complete_send_mail_explain)
+        builder.setMessage(R.string.dialog_msg)
         // Positive Buttonを設定
         builder.setPositiveButton(R.string.dialog_btn_ok, DialogButtonClickListner())
+        // Negative Buttonを設定
+        builder.setNegativeButton(R.string.dialog_btn_no, DialogButtonClickListner())
         return builder.create()
     }
 
     // ダイアログのアクションボタンがタップされた時の処理が記述されたメンバクラス
     private inner class DialogButtonClickListner: DialogInterface.OnClickListener {
         override fun onClick(dialog: DialogInterface, which: Int) {
+            when(which) {
+                DialogInterface.BUTTON_POSITIVE -> {
+                    var toastMsg = getString(R.string.delete_complete_toast)
+                    Toast.makeText(activity, toastMsg, Toast.LENGTH_LONG).show()
+                }
+            }
             dialog.dismiss()
         }
     }
