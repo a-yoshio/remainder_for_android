@@ -4,11 +4,10 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.view.View
+import android.widget.Button
 import android.widget.EditText
 import android.widget.Spinner
 import android.widget.Switch
-import kotlinx.android.synthetic.main.activity_update_remainder.*
-import kotlinx.android.synthetic.main.remainder_item.*
 
 class UpdateRemainderActivity : AppCompatActivity() {
 
@@ -27,13 +26,21 @@ class UpdateRemainderActivity : AppCompatActivity() {
         val contents = intent.getStringExtra("contents")
         contentsEditText.setText(contents)
         val date = intent.getStringExtra("date")
-        dateEditText.setText("2020/12/31")
+        dateEditText.setText(date)
         val time = intent.getStringExtra("time")
-        timeEditText.setText("12:00")
+        timeEditText.setText(time)
         val tag = intent.getStringExtra("tag")
         tagEditText.setSelection(0)
         val complete = intent.getBooleanExtra("complete", false)
         completeEditText.isChecked = complete
+
+        // リスナクラスを設定
+        val btClear = findViewById<Button>(R.id.btClear)
+        val btCancel = findViewById<Button>(R.id.btCancel)
+        val btSubmit = findViewById<Button>(R.id.btSubmit)
+
+        val createActionInstance = createActionListner()
+        arrayOf(btSubmit, btCancel, btClear).map { it.setOnClickListener(createActionInstance) }
     }
 
     private inner class createActionListner:View.OnClickListener {
