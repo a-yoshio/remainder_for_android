@@ -1,4 +1,4 @@
-package com.example.remainder_for_android
+package com.example.remainder_for_android.activity
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle

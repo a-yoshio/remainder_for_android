@@ -1,11 +1,11 @@
-package com.example.remainder_for_android
+package com.example.remainder_for_android.flagment
 
 import android.app.AlertDialog
 import android.app.Dialog
 import android.content.DialogInterface
 import android.os.Bundle
-import android.widget.Toast
 import androidx.fragment.app.DialogFragment
+import com.example.remainder_for_android.R
 
 class CompleteSendMailDialogFragment: DialogFragment() {
     override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {

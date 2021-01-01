@@ -1,9 +1,10 @@
-package com.example.remainder_for_android
+package com.example.remainder_for_android.activity
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
+import com.example.remainder_for_android.R
 
 class LoginActivity : AppCompatActivity() {
 

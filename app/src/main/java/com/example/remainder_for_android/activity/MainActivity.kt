@@ -1,4 +1,4 @@
-package com.example.remainder_for_android
+package com.example.remainder_for_android.activity
 
 import android.content.Context
 import android.content.Intent
@@ -8,6 +8,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.*
+import com.example.remainder_for_android.R
 import com.example.remainder_for_android.entity.Remainder
 import com.example.remainder_for_android.entity.Tag
 import com.example.remainder_for_android.flagment.DeleteConfirmDialogFragment
@@ -59,14 +60,15 @@ class MainActivity : AppCompatActivity() {
 
                 view = inflater!!.inflate(R.layout.remainder_item, parent, false)
 
-                viewHolder = ViewHolder(
-                    view.findViewById(R.id.remainderContents),
-                    view.findViewById(R.id.remainderTag),
-                    view.findViewById(R.id.remainderDatetime),
-                    view.findViewById(R.id.remainderComplete),
-                    view.findViewById(R.id.bt_update),
-                    view.findViewById(R.id.bt_trash)
-                )
+                viewHolder =
+                    ViewHolder(
+                        view.findViewById(R.id.remainderContents),
+                        view.findViewById(R.id.remainderTag),
+                        view.findViewById(R.id.remainderDatetime),
+                        view.findViewById(R.id.remainderComplete),
+                        view.findViewById(R.id.bt_update),
+                        view.findViewById(R.id.bt_trash)
+                    )
                 view.tag = viewHolder
             } else {
                 viewHolder = view.tag as ViewHolder
