@@ -4,19 +4,18 @@ import android.content.Context
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.*
 import com.example.remainder_for_android.entity.Remainder
 import com.example.remainder_for_android.entity.Tag
+import com.example.remainder_for_android.flagment.DeleteConfirmDialogFragment
 import com.example.remainder_for_android.utils.Util
 
 class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
-        Log.d("DEBUG", "テスと")
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         // リマインダーリストを設定
@@ -101,7 +100,8 @@ class MainActivity : AppCompatActivity() {
 
     private inner class TrashBtnClickListner(): View.OnClickListener {
         override fun onClick(view: View?) {
-            val dialogFragment = DeleteConfirmDialogFragment()
+            val dialogFragment =
+                DeleteConfirmDialogFragment()
             // ダイアログ表示
             dialogFragment.show(supportFragmentManager, "DeleteConfirmDialogFragment")
         }

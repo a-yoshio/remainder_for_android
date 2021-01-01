@@ -4,7 +4,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import android.widget.Button
-import android.widget.ImageButton
+import com.example.remainder_for_android.flagment.CompleteSendMailDialogFragment
 
 class SignInActivity : AppCompatActivity() {
 
@@ -18,7 +18,8 @@ class SignInActivity : AppCompatActivity() {
 
     private inner class SendMailBtnClickListner: View.OnClickListener {
         override fun onClick(p0: View?) {
-            val dialogFragment = CompleteSendMailDialogFragment()
+            val dialogFragment =
+                CompleteSendMailDialogFragment()
             // ダイアログ表示
             dialogFragment.show(supportFragmentManager, "CompleteSendMailDialogFragment")
         }
