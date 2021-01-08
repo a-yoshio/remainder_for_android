@@ -12,42 +12,19 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/title" />
-    <LinearLayout
+    <fragment
+        android:id="@+id/fragmentRemainderList"
+        android:name="com.example.remainder_for_android.fragment.RemainderListFragment"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
-        <EditText
-            android:id="@+id/etInput"
-            style="@style/inputStyle"
-            android:layout_width="273dp"
-            android:layout_height="wrap_content"
-            android:layout_margin="5dp"
-            android:inputType="text"/>
-
-        <Button
-            style="@style/btStyle"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="5dp"
-            android:text="@string/bt_search"
-            android:onClick="moveToLogin"/>
-    </LinearLayout>
-    <FrameLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-        <ListView
-            android:id="@+id/remainderList"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
-        <ImageButton
-            style="@android:style/Widget.ImageButton"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:layout_gravity="right|bottom"
-            android:layout_marginTop="100dp"
-            android:layout_marginRight="20dp"
-            android:background="@drawable/circle_button"
-            android:src="@drawable/ic_add_black_24dp"
-            android:onClick="moveToRegist"/>
-    </FrameLayout>
+        android:layout_height="match_parent"/>
+    <ImageButton
+        style="@android:style/Widget.ImageButton"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_gravity="right|bottom"
+        android:layout_marginTop="100dp"
+        android:layout_marginRight="20dp"
+        android:background="@drawable/circle_button"
+        android:src="@drawable/ic_add_black_24dp"
+        android:onClick="moveToRegist"/>
 </LinearLayout>
