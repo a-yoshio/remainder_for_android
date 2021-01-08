@@ -4,6 +4,7 @@ package com.example.remainder_for_android.fragment
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -18,6 +19,16 @@ import com.example.remainder_for_android.entity.Tag
  * A simple [Fragment] subclass.
  */
 class RemainderListFragment : Fragment() {
+    private var _isLayoutXLarge = true
+
+    override fun onActivityCreated(savedInstanceState: Bundle?) {
+        // 画面のサイズの判定
+        super.onActivityCreated(savedInstanceState)
+        val updateRemainderFragment = activity?.findViewById<View>(R.id.frameUpdateRemainder)
+        if (updateRemainderFragment == null) {
+            _isLayoutXLarge = false
+        }
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -86,13 +97,32 @@ class RemainderListFragment : Fragment() {
     private inner class RemainderUpdateBtnClcikListner(val viewData: ViewHolder):View.OnClickListener {
         override fun onClick(view: View?) {
             // タップされた行のデータを取得
-            val intent = Intent(activity?.applicationContext, UpdateRemainderActivity::class.java)
-            intent.putExtra("contents", viewData.contents.text)
-            intent.putExtra("date", "12/25")
-            intent.putExtra("time", "18:00")
-            intent.putExtra("complete", viewData.complete.isChecked)
-            intent.putExtra("tag", viewData.tag.text)
-            startActivity(intent)
+            if(_isLayoutXLarge) {
+                // フラグメントトランザクションの開始
+                val transaction = fragmentManager?.beginTransaction()
+                val remainderUpdateFragment = RemainderUpdateFragment()
+                // 引継ぎデータを格納
+                val bundle = Bundle()
+                bundle.putString("contents", viewData.contents.text.toString())
+                bundle.putString("date", "12/25")
+                bundle.putString("time", "18:00")
+                bundle.putBoolean("complete", viewData.complete.isChecked)
+                bundle.putString("tag", viewData.tag.text.toString())
+                remainderUpdateFragment.arguments = bundle
+                // 生成した更新フラグメントをRemainderUpdateFrameレイアウトに追加する
+                transaction?.replace(R.id.frameUpdateRemainder, remainderUpdateFragment)
+                // フラグメントトランザクションのコミット
+                transaction?.commit()
+            } else {
+                val intent =
+                    Intent(activity?.applicationContext, UpdateRemainderActivity::class.java)
+                intent.putExtra("contents", viewData.contents.text)
+                intent.putExtra("date", "12/25")
+                intent.putExtra("time", "18:00")
+                intent.putExtra("complete", viewData.complete.isChecked)
+                intent.putExtra("tag", viewData.tag.text)
+                startActivity(intent)
+            }
         }
     }
 
