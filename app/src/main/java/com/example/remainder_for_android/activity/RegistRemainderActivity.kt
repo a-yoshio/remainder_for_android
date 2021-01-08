@@ -53,8 +53,8 @@ class RegistRemainderActivity : AppCompatActivity(), DatePickerDialog.OnDateSetL
     private inner class createActionListner:View.OnClickListener {
         override fun onClick(view:View) {
             val contents = findViewById<EditText>(R.id.contents)
-            val date = findViewById<EditText>(R.id.date)
-            val time= findViewById<EditText>(R.id.time)
+            val date = findViewById<TextView>(R.id.date)
+            val time= findViewById<TextView>(R.id.time)
             val tag = findViewById<Spinner>(R.id.tag_spinner)
             val complete = findViewById<Switch>(R.id.complete)
 

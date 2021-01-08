@@ -42,7 +42,6 @@
             style="@style/inputStyle"
             android:layout_width="100dp"
             android:layout_height="wrap_content"
-            android:inputType="date"
             android:onClick="showDatePickerDialog"
             />
         <TextView
@@ -57,7 +56,6 @@
             style="@style/inputStyle"
             android:layout_width="100dp"
             android:layout_height="wrap_content"
-            android:inputType="date"
             android:onClick="showTimePickerDialog"
             />
     </LinearLayout>
