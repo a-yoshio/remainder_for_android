@@ -24,7 +24,7 @@
     <string name="dialog_btn_no">cancel</string>
     <string name="delete_complete_toast">リマインダーを削除しました</string>
     <string name="login_title">Login</string>
-    <string name="login_id">ID</string>
+    <string name="login_id">MailAddress</string>
     <string name="login_password">Password</string>
     <string name="login_enter_btn">enter</string>
     <string name="login_signin_btn">Sign In</string>

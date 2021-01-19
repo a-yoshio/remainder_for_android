@@ -1,20 +1,20 @@
 package com.example.remainder_for_android.activity
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
+import androidx.appcompat.app.AppCompatActivity
 import com.example.remainder_for_android.R
 
-class LoginActivity : AppCompatActivity() {
-
+class RemainderMainActivity: AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_login)
+        setContentView(R.layout.activity_remainder_main)
     }
 
-    fun moveToSignIn(view: View) {
-        val intent = Intent(applicationContext, SignInActivity::class.java)
+    fun moveToRegist(view: View) {
+        val intent = Intent(applicationContext, RegistRemainderActivity::class.java)
         startActivity(intent)
     }
+
 }
