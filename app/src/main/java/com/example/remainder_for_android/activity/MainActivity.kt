@@ -1,5 +1,7 @@
 package com.example.remainder_for_android.activity
 
+import android.accounts.AccountManager
+import android.content.Context
 import android.content.Intent
 import android.os.AsyncTask
 import androidx.appcompat.app.AppCompatActivity
@@ -7,8 +9,11 @@ import android.os.Bundle
 import android.util.Log
 import android.view.View
 import android.widget.*
+import com.example.remainder_for_android.Constatns
 import com.example.remainder_for_android.R
 import com.example.remainder_for_android.data.Login
+import com.example.remainder_for_android.fragment.RemainderListFragment
+import com.example.remainder_for_android.fragment.RemainderUpdateFragment
 import com.example.remainder_for_android.model.Auth
 import com.example.remainder_for_android.model.ResultHolder
 import com.example.remainder_for_android.service.AuthService
@@ -57,9 +62,10 @@ class MainActivity : AppCompatActivity() {
         }
 
         override fun onPostExecute(result: ResultHolder<Auth>) {
-            Log.d("DEBUG", ">>>>>result:" + result.toString())
             if (result.isSuccess) {
                 val intent = Intent(applicationContext, RemainderMainActivity::class.java)
+                intent.putExtra(Constatns.ACT, result.targetModel.access_token)
+                intent.putExtra(Constatns.RFT, result.targetModel.refresh_token)
                 startActivity(intent)
             } else {
                 val errorText = findViewById<TextView>(R.id.loginError)
