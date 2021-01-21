@@ -1,26 +1,18 @@
 package com.example.remainder_for_android.activity
 
-import android.accounts.AccountManager
-import android.content.Context
 import android.content.Intent
 import android.os.AsyncTask
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
 import android.view.View
 import android.widget.*
 import com.example.remainder_for_android.Constatns
 import com.example.remainder_for_android.R
-import com.example.remainder_for_android.data.Login
-import com.example.remainder_for_android.fragment.RemainderListFragment
-import com.example.remainder_for_android.fragment.RemainderUpdateFragment
+import com.example.remainder_for_android.request.LoginData
 import com.example.remainder_for_android.model.Auth
 import com.example.remainder_for_android.model.ResultHolder
-import com.example.remainder_for_android.service.AuthService
-import com.example.remainder_for_android.utils.ValidationError
+import com.example.remainder_for_android.service.auth.AuthService
 import com.example.remainder_for_android.utils.ValidationUtil
-import java.lang.Exception
-import java.lang.RuntimeException
 
 class MainActivity : AppCompatActivity() {
 
@@ -50,15 +42,16 @@ class MainActivity : AppCompatActivity() {
             if (ValidationUtil().isNullString(strMailAddress) || ValidationUtil().isNullString(strPassword) ) {
                 errorText.setText("mail address and password are required")
             }
-            val loginData = Login(strMailAddress, strPassword)
+            val loginData = LoginData(strMailAddress, strPassword)
             LoginTask().execute(loginData)
         }
     }
 
-    private inner class LoginTask: AsyncTask<Login, String, ResultHolder<Auth>>() {
-        override fun doInBackground(vararg data: Login?): ResultHolder<Auth> {
-            val service = AuthService()
-            return service.auth(data[0] as Login)
+    private inner class LoginTask: AsyncTask<LoginData, String, ResultHolder<Auth>>() {
+        override fun doInBackground(vararg data: LoginData?): ResultHolder<Auth> {
+            val service =
+                AuthService()
+            return service.auth(data[0] as LoginData)
         }
 
         override fun onPostExecute(result: ResultHolder<Auth>) {

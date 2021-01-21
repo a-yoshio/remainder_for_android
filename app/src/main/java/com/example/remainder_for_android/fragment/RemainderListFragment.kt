@@ -3,16 +3,25 @@ package com.example.remainder_for_android.fragment
 
 import android.content.Context
 import android.content.Intent
+import android.os.AsyncTask
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.*
+import com.example.remainder_for_android.Constatns
 import com.example.remainder_for_android.R
 import com.example.remainder_for_android.activity.UpdateRemainderActivity
-import com.example.remainder_for_android.entity.Remainder
-import com.example.remainder_for_android.entity.Tag
+import com.example.remainder_for_android.model.Remainder
+import com.example.remainder_for_android.view_model.RemainderVM
+import com.example.remainder_for_android.view_model.TagVM
+import com.example.remainder_for_android.model.RemainderList
+import com.example.remainder_for_android.model.ResultHolder
+import com.example.remainder_for_android.request.RemainderData
+import com.example.remainder_for_android.request.RequestHolder
+import com.example.remainder_for_android.service.remainder.RemainderService
 
 /**
  * A simple [Fragment] subclass.
@@ -37,23 +46,39 @@ class RemainderListFragment : Fragment() {
         val view = inflater.inflate(R.layout.fragment_remainder_list, container, false)
 
         // リマインダーリストを設定
-        val remainderLiView = view.findViewById<ListView>(R.id.remainderList)
-
-        val arrayAdapter = RemaindersArrayAddapter(view.context, 0).apply {
-            add(Remainder("起きる", Tag("家", "ffffff"), "2020/12/30 12:00", false, 1))
-            add(Remainder("友達と遊ぶ", Tag("家", "ffffff"), "2020/12/30 16:00", false, 1))
-            add(Remainder("ご飯を食べる", Tag("家", "ffffff"), "2020/12/30 18:00", false, 1))
-        }
-
-        remainderLiView.adapter = arrayAdapter
+        getRemainderList(view).execute()
 
         return view
+    }
+
+    private inner class getRemainderList(val view: View): AsyncTask<RequestHolder<RemainderData>, String, ResultHolder<RemainderList>>() {
+        override fun doInBackground(vararg params: RequestHolder<RemainderData>?): ResultHolder<RemainderList> {
+            val shp = activity!!.getSharedPreferences(getString(R.string.app_name), Context.MODE_PRIVATE)
+            return RemainderService().getList(shp.getString(Constatns.ACT, "") as String)
+        }
+
+        override fun onPostExecute(result: ResultHolder<RemainderList>) {
+            if(result.isSuccess) {
+                // create Adapter
+                val arrayAdapter = RemaindersArrayAddapter(view!!.context, 0).apply {
+                    result.targetModel.remainder_list.forEach {
+                        add(RemainderVM(it))
+                    }
+                }
+                val remainderLiView = view.findViewById<ListView>(R.id.remainderList)
+
+                remainderLiView.adapter = arrayAdapter
+
+            } else {
+                Log.d("DEBUG", ">>>>> get: " + result.message)
+            }
+        }
     }
 
     // リスト項目を再利用するためのホルダー
     data class ViewHolder(val contents: TextView, val tag: TextView, val datetime: TextView, val complete: Switch, val updateBt: ImageView, val trashBt: ImageView)
     // 自作のリスト項目データを扱えるようにした ArrayAdapter
-    private inner class RemaindersArrayAddapter: ArrayAdapter<Remainder> {
+    private inner class RemaindersArrayAddapter: ArrayAdapter<RemainderVM> {
         private var inflater: LayoutInflater? = context.getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater?
         constructor(context: Context, resource: Int):super(context, resource) {}
 
@@ -85,7 +110,7 @@ class RemainderListFragment : Fragment() {
             val remainderItem = getItem(position)
             viewHolder.contents.text = remainderItem!!.contents
             viewHolder.tag.text = remainderItem!!.tag.title
-            viewHolder.datetime.text = remainderItem!!.convertDatetimeToString()
+            viewHolder.datetime.text = remainderItem!!.getDisplayDateTime()
             viewHolder.complete.isChecked = remainderItem!!.complete
             viewHolder.updateBt.setOnClickListener(RemainderUpdateBtnClcikListner(viewHolder))
             viewHolder.trashBt.setOnClickListener(TrashBtnClickListner())
@@ -132,6 +157,5 @@ class RemainderListFragment : Fragment() {
             dialogFragment.show(activity!!.supportFragmentManager, "DeleteConfirmDialogFragment")
         }
     }
-
 
 }

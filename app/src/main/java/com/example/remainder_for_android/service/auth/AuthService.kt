@@ -1,21 +1,19 @@
-package com.example.remainder_for_android.service
+package com.example.remainder_for_android.service.auth
 
-import android.accounts.AuthenticatorException
-import android.os.AsyncTask
 import android.util.Log
-import android.widget.Toast
-import com.example.remainder_for_android.data.Login
+import com.example.remainder_for_android.request.LoginData
 import com.example.remainder_for_android.model.Auth
 import com.example.remainder_for_android.model.ResultHolder
-import com.fasterxml.jackson.databind.ser.Serializers
+import com.example.remainder_for_android.service.BaseService
 import retrofit2.Response
 import java.net.ConnectException
 
 class AuthService: BaseService() {
-    fun auth(vararg data: Login): ResultHolder<Auth> {
-        val loginData: Login = data[0]
+    fun auth(vararg data: LoginData): ResultHolder<Auth> {
+        val loginData: LoginData = data[0]
         Log.d("DEBUG", ">>>>start")
-        val service: AuthServiceInf= super.createService(AuthServiceInf::class.java) as AuthServiceInf
+        val service: AuthServiceInf = super.createService(
+            AuthServiceInf::class.java) as AuthServiceInf
         try {
             val response: Response<Auth> = service.auth(loginData).execute()
             if (!response.isSuccessful()) {
