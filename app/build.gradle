@@ -4,6 +4,8 @@ apply plugin: 'kotlin-android'
 
 apply plugin: 'kotlin-android-extensions'
 
+apply plugin: 'com.google.gms.google-services'
+
 android {
     compileSdkVersion 29
     buildToolsVersion "29.0.1"
@@ -41,4 +43,8 @@ dependencies {
     implementation "com.squareup.retrofit2:converter-scalars:2.3.0"
     // Gson (To convert raw JSON to pretty JSON)
     implementation 'com.squareup.retrofit2:converter-gson:2.3.0'
+    // Import the Firebase BoM
+    implementation platform('com.google.firebase:firebase-bom:26.2.0')
+    implementation 'com.google.firebase:firebase-messaging'
+    implementation 'com.google.firebase:firebase-analytics'
 }

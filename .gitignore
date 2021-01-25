@@ -24,3 +24,4 @@ app/src/main/java/com/example/remainder_for_android/config
 .gradle
 gradle
 
+google-services.json

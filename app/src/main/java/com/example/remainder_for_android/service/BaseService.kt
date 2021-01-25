@@ -1,6 +1,5 @@
 package com.example.remainder_for_android.service
 
-import android.icu.text.DateFormat
 import com.example.remainder_for_android.config.ApplicationConfig
 import com.google.gson.GsonBuilder
 import retrofit2.Retrofit
